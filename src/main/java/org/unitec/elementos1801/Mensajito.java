@@ -20,6 +20,11 @@ public class Mensajito {
     private String titulo;
     private String cuerpo;
 
+    @Override
+    public String toString() {
+        return "Mensajito{" + "id=" + id + ", titulo=" + titulo + ", cuerpo=" + cuerpo + '}';
+    }
+
     public Mensajito(Integer id, String titulo, String cuerpo) {
         this.id = id;
         this.titulo = titulo;
