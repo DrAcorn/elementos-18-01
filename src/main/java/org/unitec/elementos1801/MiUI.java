@@ -116,6 +116,14 @@ public class MiUI extends UI {
          layout.addComponent(botonActualizar);
          setContent(layout);
          
+         //Boton Borrar
+         
+         Button botonBorrar= new Button("Borrar");
+         botonBorrar.addStyleName(ValoTheme.BUTTON_FRIENDLY);
+         layout.addComponent(botonBorrar);
+         setContent(layout);
+         
+         
          
          setContent(layout);
 
@@ -131,13 +139,36 @@ public class MiUI extends UI {
            
          });
          
+         //Boton Actualizar :D si me quedo 
+         
            botonActualizar.addClickListener(evento->{
-           Mensajito mensa= repoMensa.findOne(Integer.parseInt(textoId.getValue()));
-           
-           
-           
-           
+               
+                if(textoBuscarCuerpo.getValue().equals("") || textoBuscarTitulo.getValue().equals("") || textoBuscarId.getValue().equals("")){
+                 
+             Notification.show("Se requieren los campos",Notification.TYPE_ERROR_MESSAGE);
+             }
+             else
+             {
+               Notification.show("Se actualizo el mensaje",Notification.TYPE_ERROR_MESSAGE);
+                           
+                           repoMensa.save(new Mensajito(Integer.parseInt(textoBuscarId.getValue()), textoBuscarTitulo.getValue(), textoBuscarCuerpo.getValue()));
+                                         
+             }
+                         
            });
+           
+           botonBorrar.addClickListener(evento->{
+               
+              
+               Notification.show("Se borro el mensaje",Notification.TYPE_ERROR_MESSAGE);
+                           
+                           repoMensa.delete(new Mensajito(Integer.parseInt(textoBuscarId.getValue()), textoBuscarTitulo.getValue(), textoBuscarCuerpo.getValue()));
+                                         
+             
+                   
+           });
+           
+           
     }//cierre del metodo initi
     
 }//cierre de la clase
