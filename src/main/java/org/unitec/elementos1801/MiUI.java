@@ -160,9 +160,9 @@ public class MiUI extends UI {
            botonBorrar.addClickListener(evento->{
                
               
-               Notification.show("Se borro el mensaje",Notification.TYPE_ERROR_MESSAGE);
+        Notification.show("Se borro el mensaje",Notification.TYPE_ERROR_MESSAGE);
                            
-                           repoMensa.delete(new Mensajito(Integer.parseInt(textoBuscarId.getValue()), textoBuscarTitulo.getValue(), textoBuscarCuerpo.getValue()));
+        repoMensa.delete(new Mensajito(Integer.parseInt(textoBuscarId.getValue()),textoBuscarTitulo.getValue(), textoBuscarCuerpo.getValue()));
                                          
              
                    
