@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Elementos1801Application implements CommandLineRunner {
 @Autowired RepositorioMensajito repoMensa;
+@Autowired RepositorioUsuario repoUsu;
+@Autowired RepositorioDireccion repoDir;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Elementos1801Application.class, args);
@@ -15,13 +17,27 @@ public class Elementos1801Application implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-         
+        
+        Usuario u=new Usuario(13829002L,"Erick Macareno","electric.eye09@gmail.com");
+        //Usuario
+       // repoUsu.save(u);
+        //Generamos la direccion que vamos a guardar
+        
+        Direccion d=new Direccion(new Usuario(13829002L),"Valle de atrato", 57100, "Nezahualcoyotl");
+        // repoDir.save(d);
+        
+        //Aqui haremos el join
+        Direccion d2= repoDir.findOne(1L);
+        
+        System.out.println("Correo: "+d2.getU().getEmail()+" municipio: "+d2.getMunicipio());
+        
+        //Mensajitosss 
         //repoMensa.save(new Mensajito("Primero","Mi primera vez con hibernate")
         //Mensajito m= repoMensa.findOne(1);
         //System.out.println(m.getTitulo());
         
         //repoMensa.save(new Mensajito("17 de octubre","No temblo"));
-        System.out.println("Vamos a buscar a todos");
+      /*  System.out.println("Vamos a buscar a todos");
         for(Mensajito mensa: repoMensa.findAll()){
         
             System.out.println(mensa);
@@ -41,5 +57,5 @@ public class Elementos1801Application implements CommandLineRunner {
                 System.out.println(mensa);
             }
         
-    }
+   */ }
 }
